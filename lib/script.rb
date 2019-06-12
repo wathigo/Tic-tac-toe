@@ -19,21 +19,63 @@ class Board
     def update (choice,place)
         if place <=3
             @matrix[0][@matrix[0].index(place)] = choice
-        
+
         elsif place <=6
             @matrix[1][@matrix[1].index(place)] = choice
-    
-        else 
+
+        else
             @matrix[2][@matrix[2].index(place)] = choice
         end
-        
+        display
+        result = Result.new(@matrix)
+        result.check_success
     end
+    private
     def display ()
-        print"#{@matrix[0]}\n #{@matrix[1]}\n #{@matrix[2]}\n"
-    end 
+        puts "---------"
+        puts "#{@matrix[0][0]} | #{@matrix[0][1]} | #{@matrix[0][2]}"
+        puts "---------"
+        puts "#{@matrix[1][0]} | #{@matrix[1][1]} | #{@matrix[1][2]}"
+        puts "---------"
+        puts "#{@matrix[2][0]} | #{@matrix[2][1]} | #{@matrix[2][2]}"
+        puts "---------"
+    end
 end
+
+class Result
+  def initialize(matrix)
+    @matrix = matrix
+  end
+
+  public
+  def check_success
+    check_row || check_diagonal || check_column
+  end
+  private
+  def check_row
+    if (@matrix[0][0] == @matrix[0][1] == @matrix[0][2] ||
+        @matrix[1][0] == @matrix[1][1] == @matrix[1][2] ||
+        @matrix[2][0] == @matrix[2][1] == @matrix[2][2])
+        return true
+    end
+    false
+  end
+  def check_column
+    if (@matrix[0][0] == @matrix[1][0] == @matrix[2][0] ||
+        @matrix[0][1] == @matrix[1][1] == @matrix[2][1] ||
+        @matrix[0][2] == @matrix[1][2] == @matrix[2][2])
+        return true
+    end
+    false
+  end
+  def check_diagonal
+    if (@matrix[0][0] == @matrix[1][1] == @matrix[2][2] ||
+        @matrix[2][0] == @matrix[1][1] == @matrix[0][2])
+        return true
+    end
+    false
+  end
+end
+
 new_board = Board.new
 new_board.update('x',1)
-new_board.display
-
-    
