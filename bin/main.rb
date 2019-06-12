@@ -1,6 +1,8 @@
 ## control the game
 
-require File.expand_path("lib/script.rb")
+require File.expand_path("../lib/script.rb")
+#for other users just remove the '#'
+#require File.expand_path("lib/script.rb")
 
 puts "/////////////// Welcome to the tic_tac-toe game /////////////"
 
@@ -16,7 +18,7 @@ loop do
       break
     else
       puts 'Enter a valid choice'
-      choice = gets.chomp
+      choice = gets.chomp.upcase!
     end
   end
 
@@ -39,25 +41,37 @@ loop do
   puts "*** Start to Play Now ***"
 
   loop do
-      puts "player_1 :Choose a place between 1 and 9"
-      place = gets.chomp
-      result = board.update(player_1.choice, place.to_i)
-      if result[0] == true
+    begin
+        puts "player_1 :Choose a place between 1 and 9"
+        place = gets.chomp
+        result = board.update(player_1.choice, place.to_i)
+    rescue StandardError=>e
+        puts "Error,You cannot use this place !: #{e}"
+        puts 'Try again :)'
+        retry
+    end
+    if result[0] == true
         puts "#{player_1.name} wins"
         break
-      end
-
-      puts "player_2 :Choose a place between 1 and 9"
-      place = gets.chomp
-      result = board.update(player_2.choice, place.to_i)
-      if result[0] == true
+    end
+    begin
+        puts "player_2 :Choose a place between 1 and 9"
+        place = gets.chomp
+        result = board.update(player_2.choice, place.to_i)
+    rescue StandardError=>e
+        puts "Error,You cannot use this place !: #{e}"
+        puts 'Try again :)'
+        retry
+    end
+    if result[0] == true
         puts "#{player_2.name} wins"
         break
-      end
-      if result[1] == 9
+    end
+    puts result[1]
+    if result[1] == 9
         puts "It is draw"
         break
-      end
+    end
   end
   puts "Do you want to play again? (y / n)"
   break if gets.chomp == 'n'
