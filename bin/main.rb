@@ -44,7 +44,7 @@ loop do
     break
   end
 end
-player2.choice = player1.choice == 'X' ? 'O' :  'X'
+player2.choice = player1.choice == 'X' ? 'O' : 'X'
 puts "PLAYER 2 CHOICE: #{player2.choice}"
 loop do
   board = Board.new
@@ -57,7 +57,7 @@ loop do
       puts 'player1 :Choose a place between 1 and 9'
       place = gets.chomp
       result = board.update(player1.choice, place.to_i)
-    rescue
+    rescue StandardError
       puts "Error,You cannot use this place ! \n Try again :)"
       retry
     end
@@ -78,7 +78,7 @@ loop do
       puts 'player2 :Choose a place between 1 and 9'
       place = gets.chomp
       result = board.update(player2.choice, place.to_i)
-    rescue
+    rescue StandardError
       puts "Error,You cannot use this place ! \n Try again :)"
       retry
     end
