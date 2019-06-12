@@ -5,9 +5,7 @@ require File.expand_path("../lib/script.rb")
 #require File.expand_path("lib/script.rb")
 
 puts "/////////////// Welcome to the tic_tac-toe game /////////////"
-
-loop do
-  player_1 = nil
+player_1 = nil
   player_2 = nil
   loop do
     puts "Please enter Player_1 name"
@@ -51,8 +49,10 @@ loop do
       player_2.choice = 'X'
   end
   puts "PLAYER 2 CHOICE: #{player_2.choice}"
+loop do
+  
 
-
+  
   board = Board.new
   board.display
 
@@ -70,10 +70,15 @@ loop do
     end
     if result[0] == true
         puts "#{player_1.name} wins"
+        player_1.score+=1
+        puts "#{player_1.name} score is: #{player_1.score}"
+        puts "#{player_2.name} score is: #{player_2.score}"
         break
     end
     if result[1] == 9
         puts "*** It is draw ***"
+        puts "#{player_1.name} score is: #{player_1.score}"
+        puts "#{player_2.name} score is: #{player_2.score}"
         break
     end
     begin
@@ -87,9 +92,13 @@ loop do
     end
     if result[0] == true
         puts "#{player_2.name} wins"
+        player_2.score+=1
+        puts "#{player_1.name} score is: #{player_1.score}"
+        puts "#{player_2.name} score is: #{player_2.score}"
         break
     end
   end
+  
   puts "Do you want to play again? (y / n)"
   break if gets.chomp == 'n'
 end
