@@ -11,9 +11,8 @@ end
 # implementing the Board class
 class Board
     attr_writer :matrix
-    attr_writer :choice
-    attr_reader :name
     def initialize ()
+        @counter = 0
         @matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     end
     def update (choice,place)
@@ -29,6 +28,8 @@ class Board
         display
         result = Result.new(@matrix)
         result.check_success
+        counter += 1
+        return[result.check_success, counter]
     end
     private
     def display ()
@@ -49,7 +50,7 @@ class Result
 
   public
   def check_success
-    check_row || check_diagonal || check_column
+    check_row || check_diagonal || check_column 
   end
   private
   def check_row
@@ -75,7 +76,9 @@ class Result
     end
     false
   end
+  
 end
+
 
 new_board = Board.new
 new_board.update('x',1)
