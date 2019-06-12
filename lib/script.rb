@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 # implementing the player class
-
 class Player
+  attr_accessor :score
   attr_accessor :choice
   attr_reader :name
   def initialize(name)
     @choice = nil
     @name = name
+    @score = 0
   end
 end
 # implementing the Board class
@@ -21,10 +22,8 @@ class Board
   def update(choice, place)
     if place <= 3
       @matrix[0][@matrix[0].index(place)] = choice
-
     elsif place <= 6
       @matrix[1][@matrix[1].index(place)] = choice
-
     else
       @matrix[2][@matrix[2].index(place)] = choice
     end
@@ -46,12 +45,11 @@ class Board
   end
 end
 
+# implementing result class
 class Result
   def initialize(matrix)
     @matrix = matrix
   end
-
-  public
 
   def check_success
     check_row || check_diagonal || check_column
