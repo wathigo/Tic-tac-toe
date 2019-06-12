@@ -7,9 +7,20 @@ require File.expand_path("../lib/script.rb")
 puts "/////////////// Welcome to the tic_tac-toe game /////////////"
 
 loop do
-  puts "Please enter Player_1 name"
-  player_1 = Player.new(gets.chomp)
-
+  player_1 = nil
+  player_2 = nil
+  loop do
+    puts "Please enter Player_1 name"
+    name = gets.chomp
+    valid = name.scan(/\D/).empty?
+    if valid
+      puts "Invalid name!"
+    else
+      player_1 = Player.new(name)
+      puts "PLAYER 1: #{player_1.name}"
+      break
+    end
+  end
   puts "Please select you choice 'x' or 'o'"
   choice = gets.chomp.upcase!
   loop do
@@ -23,10 +34,17 @@ loop do
   end
 
 
-
-  puts "Please enter Player_2 name"
-  player_2 = Player.new(gets.chomp)
-
+  loop do
+    puts "Please enter Player_2 name"
+    name = gets.chomp
+    valid = name.scan(/\D/).empty?
+    if valid
+      puts "Invalid name!"
+    else
+      player_2 = Player.new(name)
+      break
+    end
+  end
   if player_1.choice == 'X'
       player_2.choice = 'O'
   else
@@ -54,6 +72,10 @@ loop do
         puts "#{player_1.name} wins"
         break
     end
+    if result[1] == 9
+        puts "*** It is draw ***"
+        break
+    end
     begin
         puts "player_2 :Choose a place between 1 and 9"
         place = gets.chomp
@@ -65,11 +87,6 @@ loop do
     end
     if result[0] == true
         puts "#{player_2.name} wins"
-        break
-    end
-    puts result[1]
-    if result[1] == 9
-        puts "It is draw"
         break
     end
   end
