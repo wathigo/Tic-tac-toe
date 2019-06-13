@@ -11,7 +11,7 @@ A simple program that simulates the [Tic-tac-toe](http://en.wikipedia.org/wiki/T
 1. Open the terminal.
 2. Enter `git clone https://github.com/wathigo/Tic-tac-toe.git`.
 3. Navigate to the cloned repository.
-4. Enter the command `ruby main.rb` in the root directory to run the program.
+4. Enter the command `ruby main.rb` inside the `bin` directory to run the program.
 5. Open the code editor to edit the program.
 
 ## Contributor(s)
