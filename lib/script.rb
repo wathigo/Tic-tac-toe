@@ -13,7 +13,7 @@ class Player
 end
 # implementing the Board class
 class Board
-  attr_writer :matrix
+  attr_accessor :matrix
   def initialize
     @counter = 0
     @matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -27,21 +27,10 @@ class Board
     else
       @matrix[2][@matrix[2].index(place)] = choice
     end
-    display
     result = Result.new(@matrix)
     result.check_success
     @counter += 1
-    [result.check_success, @counter]
-  end
-
-  def display
-    puts '---------'
-    puts "#{@matrix[0][0]} | #{@matrix[0][1]} | #{@matrix[0][2]}"
-    puts '---------'
-    puts "#{@matrix[1][0]} | #{@matrix[1][1]} | #{@matrix[1][2]}"
-    puts '---------'
-    puts "#{@matrix[2][0]} | #{@matrix[2][1]} | #{@matrix[2][2]}"
-    puts '---------'
+    [result.check_success, @counter, @matrix]
   end
 end
 
