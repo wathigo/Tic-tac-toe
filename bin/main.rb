@@ -2,7 +2,7 @@
 
 ## control the game
 
-require File.expand_path('lib/script.rb')
+require File.expand_path('../lib/script.rb')
 # for other users just remove the '#'
 # require File.expand_path("lib/script.rb")
 def display(matrix)
