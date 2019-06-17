@@ -13,7 +13,7 @@ class Player
 end
 # implementing the Board class
 class Board
-  attr_accessor :matrix
+  attr_accessor :matrix, :counter
   def initialize
     @counter = 0
     @matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -36,6 +36,7 @@ end
 
 # implementing result class
 class Result
+  attr_accessor :matrix
   def initialize(matrix)
     @matrix = matrix
   end
