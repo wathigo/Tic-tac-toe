@@ -20,16 +20,24 @@ describe '#validate_name' do
 end
 
 describe '#validate_choice' do
-  let(:valid_choice) { 'X' }
+  let(:valid_choice1) { 'X' }
+  let(:valid_choice2) { 'O' }
   it 'Returns the choice if the choice is valid' do
-    expect(validate_choice(valid_choice)).to eql('X')
+    expect(validate_choice(valid_choice1)).to eql('X')
+  end
+  it 'Returns the choice if the choice is valid' do
+    expect(validate_choice(valid_choice2)).to eql('O')
   end
 end
 
 describe '#rtn_players' do
-  it 'Should use gets to get input from the user' do
+  let(:players) {rtn_players}
+  it 'Returns player1 object' do
     allow($stdin).to receive(:gets).and_return('simon', 'x', 'Othamane')
-    players = rtn_players
     expect(players[0].name).to eql('simon')
+  end
+  it 'Returns player2 object' do
+    allow($stdin).to receive(:gets).and_return('simon', 'x', 'Othamane')
+    expect(players[1].name).to eql('Othamane')
   end
 end

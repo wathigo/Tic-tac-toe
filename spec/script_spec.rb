@@ -11,6 +11,9 @@ RSpec.describe Player do
     it 'Returns a player object with the name as one of the attribute' do
       expect(player.name).to eql('Jason')
     end
+    it "Returns player's object score attribute initialsed to 0" do
+      expect(player.score).to eql(0)
+    end
   end
 
   describe '#Player.choice' do
@@ -18,21 +21,31 @@ RSpec.describe Player do
       player.choice = 'x'
       expect(player.choice).to eql('x')
     end
+    it 'Returns a player object with the attribute choice set to the given value' do
+      player.choice = 'o'
+      expect(player.choice).to eql('o')
+    end
   end
 end
 
 describe Board do
   let(:board) { Board.new }
   describe '#Board.new' do
-    it 'initializes two instant variables, matrix and counter' do
-      expect(board.counter).to eql(0)
+    it 'initializes matrix instant variable' do
       expect(board.matrix).to eql([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    end
+    it 'initializes counter instant variable' do
+      expect(board.counter).to eql(0)
     end
   end
 
   describe '#update' do
-    it 'Returns an array containing boolean, counter and matrix' do
+    it 'Returns an array containing false, counter and matrix' do
       expect(board.update('X', 3)).to eql([false, 1, [[1, 2, 'X'], [4, 5, 6], [7, 8, 9]]])
+    end
+    it 'Returns an array containing true, counter and matrix' do
+      board1 = Board.new([[1, 'X', 'X'], [4, 5, 6], [7, 8, 9]])
+      expect(board1.update('X', 1)).to eql([true, 1, [["X", "X", 'X'], [4, 5, 6], [7, 8, 9]]])
     end
   end
 end

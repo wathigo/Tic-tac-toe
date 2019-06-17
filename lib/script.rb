@@ -14,9 +14,9 @@ end
 # implementing the Board class
 class Board
   attr_accessor :matrix, :counter
-  def initialize
+  def initialize(matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     @counter = 0
-    @matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @matrix = matrix
   end
 
   def update(choice, place)
