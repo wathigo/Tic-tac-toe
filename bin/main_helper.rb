@@ -25,9 +25,9 @@ end
 
 def validate_choice(choice)
   loop do
-    if choice == 'X' || choice == 'O'
+    arr=['X', 'O']
+    if arr.include? choice
       return choice
-      break
     else
       puts 'Enter a valid choice'
       choice = gets.chomp.upcase!
@@ -35,7 +35,7 @@ def validate_choice(choice)
   end
 end
 
-def get_players
+def rtn_players
   puts 'Please enter player1 name'
   name = $stdin.gets.chomp
   player1 = Player.new(validate_name(name))

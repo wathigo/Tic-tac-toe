@@ -27,10 +27,10 @@ describe '#validate_choice' do
   end
 end
 
-describe '#get_players' do
+describe '#rtn_players' do
   it 'Should use gets to get input from the user' do
     allow($stdin).to receive(:gets).and_return('simon', 'x', 'Othamane')
-    players = get_players
+    players = rtn_players
     expect(players[0].name).to eql('simon')
   end
 end

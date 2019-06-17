@@ -8,11 +8,7 @@ require File.expand_path('./main_helper.rb')
 
 
 puts "/////////////// Welcome to the tic_tac-toe game /////////////"
-
-player1 = nil
-player2 = nil
-
-players = get_players
+players = rtn_players
 player1 = players[0]
 player2 = players[1]
 
