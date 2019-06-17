@@ -6,8 +6,7 @@ require File.expand_path('../lib/script.rb')
 require File.expand_path('./main_helper.rb')
 # require File.expand_path("lib/script.rb")
 
-
-puts "/////////////// Welcome to the tic_tac-toe game /////////////"
+puts '/////////////// Welcome to the tic_tac-toe game /////////////'
 players = rtn_players
 player1 = players[0]
 player2 = players[1]

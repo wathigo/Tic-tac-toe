@@ -31,7 +31,7 @@ describe '#validate_choice' do
 end
 
 describe '#rtn_players' do
-  let(:players) {rtn_players}
+  let(:players) { rtn_players }
   it 'Returns player1 object' do
     allow($stdin).to receive(:gets).and_return('simon', 'x', 'Othamane')
     expect(players[0].name).to eql('simon')

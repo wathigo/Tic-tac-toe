@@ -45,7 +45,7 @@ describe Board do
     end
     it 'Returns an array containing true, counter and matrix' do
       board1 = Board.new([[1, 'X', 'X'], [4, 5, 6], [7, 8, 9]])
-      expect(board1.update('X', 1)).to eql([true, 1, [["X", "X", 'X'], [4, 5, 6], [7, 8, 9]]])
+      expect(board1.update('X', 1)).to eql([true, 1, [%w[X X X], [4, 5, 6], [7, 8, 9]]])
     end
   end
 end
