@@ -38,17 +38,17 @@ end
 
 def get_players
   puts 'Please enter player1 name'
-  name = gets.chomp
+  name = $stdin.gets.chomp
   player1 = Player.new(validate_name(name))
 
 
   puts "Please select you choice 'x' or 'o'"
-  choice = gets.chomp.upcase!
+  choice = $stdin.gets.chomp.upcase!
   player1.choice = validate_choice(choice)
 
 
   puts 'Please enter player2 name'
-  name = gets.chomp
+  name = $stdin.gets.chomp
   player2 = Player.new(validate_name(name))
 
   player2.choice = player1.choice == 'X' ? 'O' : 'X'

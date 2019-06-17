@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 # spec/main_spec.rb
-
+require 'stringio'
 require File.expand_path('./bin/main_helper.rb')
 #require File.expand_path('../lib/main.rb')
 
@@ -26,6 +26,10 @@ describe "#validate_choice" do
   end
 end
 
-# describe "#get_players" do
-#   it "Should use gets to get input from the user"
-# end
+describe "#get_players" do
+  it "Should use gets to get input from the user" do
+    allow($stdin).to receive(:gets).and_return('simon', 'x', 'Othamane')
+    players = get_players
+    expect(players[0].name).to eql('simon')
+  end
+end
