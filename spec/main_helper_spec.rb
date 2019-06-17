@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # spec/main_spec.rb
-require 'stringio'
 require File.expand_path('./bin/main_helper.rb')
 # require File.expand_path('../lib/main.rb')
 
