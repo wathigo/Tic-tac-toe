@@ -25,7 +25,7 @@ end
 
 def validate_choice(choice)
   loop do
-    arr=['X', 'O']
+    arr = %w[X O]
     if arr.include? choice
       return choice
     else
