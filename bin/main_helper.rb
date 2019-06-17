@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def display(matrix)
   puts '---------'
   puts "#{matrix[0][0]} | #{matrix[0][1]} | #{matrix[0][2]}"
@@ -8,13 +10,11 @@ def display(matrix)
   puts '---------'
 end
 
-
-
 def validate_name(name)
   loop do
     valid = name.scan(/\D/).empty?
     if valid
-      puts "Enter a valid name!"
+      puts 'Enter a valid name!'
       name = gets.chomp
     else
       return name
@@ -22,7 +22,6 @@ def validate_name(name)
     end
   end
 end
-
 
 def validate_choice(choice)
   loop do
@@ -41,11 +40,9 @@ def get_players
   name = $stdin.gets.chomp
   player1 = Player.new(validate_name(name))
 
-
   puts "Please select you choice 'x' or 'o'"
   choice = $stdin.gets.chomp.upcase!
   player1.choice = validate_choice(choice)
-
 
   puts 'Please enter player2 name'
   name = $stdin.gets.chomp
