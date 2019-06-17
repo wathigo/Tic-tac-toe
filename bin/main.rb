@@ -19,13 +19,13 @@ end
 
 
 def validate_name(name)
-  loop
+  loop do
     valid = name.scan(/\D/).empty?
     if valid
       puts "Enter a valid name!"
       name = gets.chomp
     else
-      name
+      return name
       break
     end
   end
@@ -35,22 +35,22 @@ end
 def validate_choice(choice)
   loop do
     if choice == 'X' || choice == 'O'
-    choice
-    break
-  else
-    puts 'Enter a valid choice' 
-    choice = gets.chomp.upcase!
+      return choice
+      break
+    else
+      puts 'Enter a valid choice'
+      choice = gets.chomp.upcase!
+    end
   end
 end
-
-puts '/////////////// Welcome to the tic_tac-toe game /////////////'
+puts "/////////////// Welcome to the tic_tac-toe game /////////////"
 
 player1 = nil
 player2 = nil
 
 puts 'Please enter player1 name'
 name = gets.chomp
-player1.name = validate_name(name)
+player1 = Player.new(validate_name(name))
 
 
 puts "Please select you choice 'x' or 'o'"
@@ -60,11 +60,11 @@ player1.choice = validate_choice(choice)
 
 puts 'Please enter player2 name'
 name = gets.chomp
-player2.name = validate_name(name)
+player2 = Player.new(validate_name(name))
 
 player2.choice = player1.choice == 'X' ? 'O' : 'X'
 puts "PLAYER 2 CHOICE: #{player2.choice}"
-
+puts "PLAYER 1 CHOICE: #{player1.choice}"
 
 
 
